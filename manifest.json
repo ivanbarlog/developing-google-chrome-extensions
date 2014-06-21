@@ -1,34 +1,59 @@
 {
-  "name": "BrowserExtension",
+  "name": "Google Translate shortcuts",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description" : "Description ...",
+  "description" : "Support for keyboard shortcuts at http://translate.google.com. Change language? Swap languages? Use the mouse? No more! Just press CTRL + O for change origin language, CTRL + D for desired language and CTRL + S for swapping languages. Mac users just replace CTRL with Cmd key.",
   "icons": { "16": "icons/16x16.png", "48": "icons/48x48.png", "128": "icons/128x128.png" },
 
-  "omnibox": { "keyword" : "yeah" },
-
-  "browser_action": {
-    "default_icon": {
-      "19": "icons/19x19.png",
-      "38": "icons/38x38.png"
-    },
-    "default_title": "That's the tool tip",
-    "default_popup": "browseraction/popup.html"
+  "commands": {
+      "change-origin-language": {
+          "suggested_key": {
+              "default": "Ctrl+Shift+O",
+              "mac": "Command+Shift+O"
+          },
+          "description": "Change origin language"
+      },
+      "change-translation-language": {
+          "suggested_key": {
+              "default": "Ctrl+Shift+T",
+              "mac": "Command+Shift+T"
+          },
+          "description": "Change translation language"
+      },
+      "swap-languages": {
+          "suggested_key": {
+              "default": "Ctrl+Shift+S",
+              "mac": "Command+Shift+S",
+              "linux": "Ctrl+Shift+S"
+          },
+          "description": "Swap languages"
+      }
   },
+
+//  "omnibox": { "keyword" : "translate" },
+
+//  "browser_action": {
+//    "default_icon": {
+//      "19": "icons/19x19.png",
+//      "38": "icons/38x38.png"
+//    },
+//    "default_title": "That's the tool tip",
+//    "default_popup": "browseraction/popup.html"
+//  },
 
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
 
-  "chrome_url_overrides" : {
-    "newtab": "newtab/newtab.html"
-  },
+//  "chrome_url_overrides" : {
+//    "newtab": "newtab/newtab.html"
+//  },
 
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["content.js"]
+      "matches": ["http://translate.google.com/*", "https://translate.google.com/*"],
+      "js": ["shortcuts.js"]
     }
   ],
 
