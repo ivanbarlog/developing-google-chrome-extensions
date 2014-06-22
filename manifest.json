@@ -1,6 +1,6 @@
 {
   "name": "Google Translate shortcuts",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "manifest_version": 2,
   "description" : "Support for keyboard shortcuts at http://translate.google.com. Change language? Swap languages? Use the mouse? No more! Just press CTRL + O for change origin language, CTRL + D for desired language and CTRL + S for swapping languages. Mac users just replace CTRL with Cmd key.",
   "icons": { "16": "icons/16x16.png", "48": "icons/48x48.png", "128": "icons/128x128.png" },
@@ -8,23 +8,19 @@
   "commands": {
       "change-origin-language": {
           "suggested_key": {
-              "default": "Ctrl+Shift+O",
-              "mac": "Command+Shift+O"
+              "default": "Ctrl+Shift+O"
           },
           "description": "Change origin language"
       },
       "change-translation-language": {
           "suggested_key": {
-              "default": "Ctrl+Shift+T",
-              "mac": "Command+Shift+T"
+              "default": "Ctrl+Shift+T"
           },
           "description": "Change translation language"
       },
       "swap-languages": {
           "suggested_key": {
-              "default": "Ctrl+Shift+S",
-              "mac": "Command+Shift+S",
-              "linux": "Ctrl+Shift+S"
+              "default": "Ctrl+Shift+S"
           },
           "description": "Swap languages"
       }
@@ -53,7 +49,7 @@
   "content_scripts": [
     {
       "matches": ["http://translate.google.com/*", "https://translate.google.com/*"],
-      "js": ["shortcuts.js"]
+      "js": ["jquery-1.11.1.min.js", "content.js"]
     }
   ],
 
